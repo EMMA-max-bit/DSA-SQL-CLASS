@@ -1,0 +1,149 @@
+create database DSA_db
+
+---------------create table -------------------
+create table Employee(
+Staffid varchar (10),
+FirstName varchar (100),
+LastName Varchar (100),
+Gender nvarchar (10),
+Date_of_Birth date,
+HireDate date
+primary key (staffid)
+);
+
+select * from Employee
+
+-------insert-------
+
+insert into Employee (staffid, firstname, LastName, gender,Date_of_Birth, hiredate)
+values ( 'AB201', 'Ayan', 'Olakun', 'female', '1992-08-22', '2018-02-09'),
+( 'AB212', 'okorie', 'mercy', 'female','1988-10-09', '2018-10-09'),
+( 'AB223', 'joshua', 'chukwuemeka', 'male','1980-10-09', '2022-02-09'),
+( 'AB234', 'sanni', 'ibrahim', 'male','1958-10-09', '2019-09-23'),
+( 'AB254', 'mercy', 'olanipekun', 'female','1982-10-09', '2020-02-09'),
+( 'AB249', 'johnson', 'mercy', 'female','1982-10-09', '2019-12-09'),
+( 'AB298', 'ayomide', 'halleluyah', 'female', '1982-10-09','2018-07-11'),
+( 'AB260', 'deborah', 'justin', 'female','1982-10-09', '1988-02-09'),
+( 'AB281', 'wale', 'olanipekun', 'male','1982-10-09', '2018-02-09')
+
+INSERT INTO Employee (Staffid, FirstName, LastName, Gender, Date_of_Birth, HireDate)
+Values ('AB296', 'Yusuf','olaide','Male','1990-10-10', '2022-01-20'),
+('AB294', 'olajide','Ayodeji','Female','1976-10-10', '1990-01-20')
+
+
+SELECT * FROM Employee
+
+
+
+create database DSA_db
+
+
+CREATE TABLE Employee (
+staffid varchar (10),
+FirstName varchar (255), 
+LastName varchar (255),
+Gender varchar (10),
+Date_of_Birth date,
+HireDate datetime,
+primary key (staffid)
+)
+
+insert into Employee (staffid, firstname, LastName, gender,Date_of_Birth, hiredate)
+values ( 'AB401', 'ayan', 'olakun', 'female', '1992-08-22', '2018-02-09'),
+( 'AB212', 'okorie', 'mercy', 'female','1988-10-09', '2018-10-09'),
+( 'AB223', 'joshua', 'chukwuemeka', 'male','1980-10-09', '2022-02-09'),
+( 'AB234', 'sanni', 'ibrahim', 'male','1958-10-09', '2019-09-23'),
+( 'AB254', 'mercy', 'olanipekun', 'female','1982-10-09', '2020-02-09'),
+( 'AB249', 'johnson', 'mercy', 'female','1982-10-09', '2019-12-09'),
+( 'AB298', 'ayomide', 'halleluyah', 'female', '1982-10-09','2018-07-11'),
+( 'AB260', 'deborah', 'justin', 'female','1982-10-09', '2018-02-09'),
+( 'AB281', 'wale', 'olanipekun', 'male','1982-10-09', '2018-02-09')
+
+select * from Employee
+
+drop table Employee
+
+----truncate table employee
+
+--delete employee	
+--where staffid = 'AB212'
+
+
+------IMPORT CSV FILES INTO DB----
+--EMPLOYEE.CSV
+--SALARY.CSV
+--PAYMENT.CSV
+
+----create table salary-----
+CREATE TABLE Salary (
+salary_id int identity (1,1)not null,
+Staffid varchar (255),
+firstname varchar (255),
+lastname varchar (255),
+department nvarchar(max),
+salary decimal (10, 3) ---(10: precision, 3:scale)
+)
+
+
+select * from salary
+
+insert into salary (staffid, firstname, lastname, department, salary)
+values ( 'AB401', 'ayan', 'olakun', 'Information Tech.', 45000.45),
+( 'AB212', 'okorie', 'mercy','Account',500000.99999),
+( 'AB223', 'joshua', 'chukwuemeka', 'Human Resources',100560.9339999),
+( 'AB234', 'sanni', 'ibrahim', 'Sales and Marketing',845688.99),
+( 'AB254', 'mercy', 'olanipekun', 'Account',8889.999999),
+( 'AB249', 'johnson', 'mercy', 'Information Tech.',234000.90909090),
+( 'AB298', 'ayomide', 'halleluyah', 'Logistics', 678000.991999),
+( 'AB260', 'deborah', 'justin', 'Logistics',900099.00697969),
+( 'AB281', 'wale', 'olanipekun', 'Information Tech',873093.2344)
+
+alter table salary
+alter column salary decimal (10,3)
+
+
+-----create table payment
+
+CREATE TABLE Payment (
+paymentid int identity (1,1) primary key,
+Account_No bigint not null,
+staffid int,
+Bank varchar (255) default 'Zenith Bank',
+Payment_Method varchar (50) check (Payment_Method = 'Cash' or Payment_Method = 'Transfer')
+)
+
+select * from Payment
+
+insert into Payment (account_no,staffid,payment_method )
+values (2033030303, 'AB200', 'transfer'),
+(2123459910, 'AB401',  'transfer'),
+(2034562240, 'AB254',  'cash'),
+(2234556303, 'AB212',  'transfer'),
+(2033037703, 'AB249',  'cash'),
+(2033030303, 'AB298',  'cash'),
+(2455657503, 'AB260',  'transfer'),
+(2045595953, 'AB281',  'cash'),
+(2033030303, 'AB273',  'transfer'),
+(2077778903, 'AB299',  'transfer'),
+(2033030301, 'AB286', 'transfer'),
+(2123459911, 'AB260',  'transfer'),
+(2034562241, 'AB270',  'cash'),
+(2234556302, 'AB104',  'transfer'),
+(2033037705, 'AB268',  'cash'),
+(2033030306, 'AB270',  'cash'),
+(2455657509, 'AB300',  'transfer')
+
+
+insert into Payment
+values (2198773830, 'AB299',  'GT bank', 'transfer'),
+(2024656569, 'AB405',  'Access bank', 'cash'),
+(2222444933, 'AB200',  'Fidelity bank', 'transfer'),
+(5674842300, 'AB278', 'Access bank', 'transfer'),
+(2222444933, 'AB200',  'GT bank', 'transfer'),
+(2034537300, 'AB278', 'Access bank', 'transfer')
+
+alter table payment
+alter column staffid varchar (50)
+
+
+drop table Payment
